@@ -1,29 +1,28 @@
 /* @flow */
+/*global setTimeout*/
 
-import { combineReducers } from "redux";
-import * as types from "../actions";
+export const REQUEST_DATA = "REQUEST_DATA";
+export const RECEIVE_DATA = "RECEIVE_DATA";
 
-const data = (state = {
-  isFetching: false,
-  message: ""
-}, action) => {
-  switch (action.type) {
-  case types.REQUEST_DATA:
-    return Object.assign({}, state, {
-      isFetching: true
-    });
-  case types.RECEIVE_DATA:
-    return Object.assign({}, state, {
-      isFetching: false,
-      message: action.data.message
-    });
-  default:
-    return state;
-  }
+export const requestData = (): Object => {
+  return {
+    type: REQUEST_DATA
+  };
 };
 
-const rootReducer = combineReducers({
-  data
-});
+export const receiveData = (data: Object): Object => {
+  return {
+    type: RECEIVE_DATA,
+    data
+  };
+};
 
-export default rootReducer;
+export const fetchData = (): Function => {
+  return (dispatch) => {
+    dispatch(requestData());
+    return setTimeout(() => {
+      const data = {message: "Hello"};
+      dispatch(receiveData(data));
+    }, 300);
+  };
+};
