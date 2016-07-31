@@ -24,7 +24,7 @@ class Featured extends Component {
         return (
         <View style={styles.container}>
             <Text style={styles.description}>
-              Featured Tab
+              COMMUNITY
             </Text>
         </View>
         );

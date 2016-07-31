@@ -3,7 +3,7 @@
 import React from 'react';
 import { Provider } from "react-redux";
 import configureStore from "./store/configure-store";
-import Featured from "./components/Featured";
+import Community from "./components/community/community";
 
 const store = configureStore();
 
@@ -11,7 +11,7 @@ class Root extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Featured />
+        <Community />
       </Provider>
     );
   }
