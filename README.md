@@ -1,7 +1,7 @@
 # SocialBrew
 SocialBrew Prototype.
 
-To run:
+<b>To run</b>:
   <br/>
   make sure you have Xcode installed
   <br/>
