@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     View,
-    Text,
+    Text
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     }
 });
 
-class Featured extends Component {
+class Community extends Component {
     render() {
         return (
         <View style={styles.container}>
@@ -31,4 +31,4 @@ class Featured extends Component {
     }
 }
 
-module.exports = Featured;
+export default Community;
