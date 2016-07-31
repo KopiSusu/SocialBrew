@@ -21,7 +21,7 @@ export const fetchData = (): Function => {
   return (dispatch) => {
     dispatch(requestData());
     return setTimeout(() => {
-      const data = {message: "Hello"};
+      const data = {message: "Heres testing a fake request response! Need to hook up to community"};
       dispatch(receiveData(data));
     }, 300);
   };
