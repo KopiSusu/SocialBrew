@@ -5,7 +5,6 @@ import {
     StyleSheet,
     View,
     Text,
-    Navigator,
     TouchableHighlight
 } from 'react-native';
 
@@ -21,8 +20,8 @@ const styles = StyleSheet.create({
     }
 });
 
-class Community extends Component {
-
+class Boards extends Component {
+    
     clickHandler() {
         this.props.navigator.push({
           component: 'Boards',
@@ -32,9 +31,9 @@ class Community extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TouchableHighlight onPress={this.clickHandler.bind(this)}>
+                <TouchableHighlight>
                     <Text style={styles.description}>
-                      COMMUNITY
+                      BOARDS
                     </Text>
                 </TouchableHighlight>
             </View>
@@ -42,4 +41,4 @@ class Community extends Component {
     }
 }
 
-export default Community;
+export default Boards;

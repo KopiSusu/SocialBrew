@@ -17,9 +17,12 @@ export const receiveData = (data: Object): Object => {
   };
 };
 
+// Going to be using mock data to begin with. Just stick it in here. 
 export const fetchData = (): Function => {
   return (dispatch) => {
     dispatch(requestData());
+
+    // Temp fake promise.
     return setTimeout(() => {
       const data = {message: "Heres testing a fake request response! Need to hook up to community"};
       dispatch(receiveData(data));
