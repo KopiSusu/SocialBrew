@@ -2,8 +2,10 @@
 /*eslint-disable prefer-const */
 
 import React, { Component } from "react";
-import Community from "./community/community";
-import Boards from "./boards/boards";
+import Home from "./home/home";
+import Files from "./files/files";
+import Chat from "./chat/chat";
+import Calendar from "./calendar/calendar";
 
 import {
   Navigator,
@@ -11,8 +13,10 @@ import {
 } from 'react-native';
 
 const routes = {
-  'Community': Community,
-  'Boards': Boards
+  Home,
+  Files,
+  Chat,
+  Calendar
 }
 
 class Scene extends React.Component {
@@ -34,7 +38,7 @@ class Scene extends React.Component {
         style={{flex: 1}}
         renderScene={this.renderScene}
         initialRoute={{
-          component: 'Community',
+          component: 'Home',
         }}
       />
     );
