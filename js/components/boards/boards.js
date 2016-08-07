@@ -21,17 +21,17 @@ const styles = StyleSheet.create({
 });
 
 class Boards extends Component {
-    
+
     clickHandler() {
         this.props.navigator.push({
-          component: 'Boards',
+          component: 'Community',
         });
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <TouchableHighlight>
+                <TouchableHighlight onPress={this.clickHandler.bind(this)}>
                     <Text style={styles.description}>
                       BOARDS
                     </Text>
