@@ -6,10 +6,13 @@ import Home from "./home/home";
 import Files from "./files/files";
 import Chat from "./chat/chat";
 import Calendar from "./calendar/calendar";
+import Navbar from "./Common/navbar";
+
 
 import {
   Navigator,
-  View
+  View,
+  StyleSheet
 } from 'react-native';
 
 const routes = {
@@ -19,7 +22,16 @@ const routes = {
   Calendar
 }
 
+
+const styles = StyleSheet.create({
+    nav: {
+        fontSize: 20,
+        backgroundColor: 'white'
+    }
+});
+
 class Scene extends React.Component {
+
 
   renderScene(route: Object, navigator: Object) {
     let Component = routes[route.component];
@@ -29,6 +41,13 @@ class Scene extends React.Component {
           navigator={navigator}
           route={route}
         />
+
+        <Navbar
+        navigator={navigator}
+        route={route}
+        activeOne={route} 
+        style={styles.nav}/>
+        
       </View>
     );
   }
