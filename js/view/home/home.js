@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import * as  Actions from './../../actions'
 
 import {
     StyleSheet,
@@ -31,6 +32,7 @@ class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
+                
                 <TouchableHighlight onPress={this.clickHandler.bind(this)}>
                     <Text style={styles.description}>
                       Home
@@ -41,4 +43,15 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Home
+
+// const mapStateToProp = (state) => {
+//     return {
+//         user: state.auth.user,
+//         selected: state.groups.selected,
+//         messages: state.chat.messages,
+//         isFetching: state.groups.isFetching
+//     }
+// }
+
+// export default connect(mapStateToProp, Actions)(Home);

@@ -1,32 +1,18 @@
 /* @flow */
-
-import { combineReducers } from "redux";
-import * as types from "../actions";
-
-const data = (state = {
-  isFetching: false,
-  message: ""
-}, action) => {
-
-  switch (action.type) {
-
-    case types.REQUEST_DATA:
-      return Object.assign({}, state, {
-        isFetching: true
-      });
-    case types.RECEIVE_DATA:
-      return Object.assign({}, state, {
-        isFetching: false,
-        message: action.data.message
-      });
-    default:
-      return state;
-  }
-
-};
+import { combineReducers } from 'redux'
+import calendar from './calendar/calendar'
+import chat from './chat/chat'
+import common from './common/common'
+import files from './files/files'
+import home from './home/home'
 
 const rootReducer = combineReducers({
-  data
+	calendar,
+	chat,
+	common,
+	files,
+	home
 });
 
 export default rootReducer;
+

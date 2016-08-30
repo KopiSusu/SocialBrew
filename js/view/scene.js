@@ -2,11 +2,14 @@
 /*eslint-disable prefer-const */
 
 import React, { Component } from "react";
+
 import Home from "./home/home";
+import Community from "./home/community/community";
+
 import Files from "./files/files";
 import Chat from "./chat/chat";
 import Calendar from "./calendar/calendar";
-import Navbar from "./Common/navbar";
+import Navbar from "./common/navbar";
 
 
 import {
@@ -19,7 +22,8 @@ const routes = {
   Home,
   Files,
   Chat,
-  Calendar
+  Calendar,
+  Community
 }
 
 
@@ -41,13 +45,11 @@ class Scene extends React.Component {
           navigator={navigator}
           route={route}
         />
-
         <Navbar
-        navigator={navigator}
-        route={route}
-        activeOne={route} 
-        style={styles.nav}/>
-        
+          navigator={navigator}
+          route={route}
+          activeOne={route} 
+          style={styles.nav}/>
       </View>
     );
   }
@@ -57,7 +59,7 @@ class Scene extends React.Component {
         style={{flex: 1}}
         renderScene={this.renderScene}
         initialRoute={{
-          component: 'Home',
+          component: 'Community',
         }}
       />
     );

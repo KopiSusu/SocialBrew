@@ -1,31 +1,43 @@
+// select convo
+// select file
+// select board
+// select community
+// select post
+
 /* @flow */
 /*global setTimeout*/
+export const selectItem = (type, item) => {
+    return {
+        type: 'SELECT_' + type,
+        payload: item
+    }
+}
 
-export const REQUEST_DATA = "REQUEST_DATA";
-export const RECEIVE_DATA = "RECEIVE_DATA";
-
-export const requestData = (): Object => {
+export const submitMessage = (message) => {
   return {
-    type: REQUEST_DATA
-  };
-};
+    meta: {remote: true},
+    type: 'SUBMIT_MESSAGE',
+    payload: message
+  }
+}
 
-export const receiveData = (data: Object): Object => {
-  return {
-    type: RECEIVE_DATA,
-    data
-  };
-};
+export const receiveData = (json, returnType, nestedKey) => {
+  let returnResponse = {
+    type: returnType,
+    data: json,
+    receivedAt: Date.now()
+  }
+  if (nestedKey)
+    returnResponse.nestedKey = nestedKey
 
-// Going to be using mock data to begin with. Just stick it in here. 
-export const fetchData = (): Function => {
-  return (dispatch) => {
-    dispatch(requestData());
-
-    // Temp fake promise.
-    return setTimeout(() => {
-      const data = {message: "Heres testing a fake request response! Need to hook up to community"};
-      dispatch(receiveData(data));
-    }, 300);
-  };
-};
+  return returnResponse
+}
+export function fetchData(url, returnType, nestedKey) {
+  return function (dispatch) {
+    return fetch(`https://s3.amazonaws.com/datadummy/${url}.json`)
+      .then(response => response.json())
+      .then(json =>
+        dispatch(receiveData(json, returnType, nestedKey))
+      )
+  }
+}

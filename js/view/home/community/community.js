@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
-    }
+    },
 });
 
 class Community extends Component {
@@ -31,11 +31,11 @@ class Community extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TouchableHighlight onPress={this.clickHandler.bind(this)}>
+                <View style={styles.navbar}>
                     <Text style={styles.description}>
-                      COMMUNITY
+                      hello
                     </Text>
-                </TouchableHighlight>
+                </View>
             </View>
         );
     }
