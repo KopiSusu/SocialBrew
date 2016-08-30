@@ -1,5 +1,6 @@
-
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
+import * as  Actions from './../../actions'
 
 import {
     StyleSheet,
@@ -22,6 +23,14 @@ const styles = StyleSheet.create({
 
 class Files extends Component {
 
+    constructor(props) {
+        super(props)
+    }
+
+    componentWillMount() {
+        this.props.fetchData('files', '_FETCH_FILES')
+    }
+
     clickHandler() {
         this.props.navigator.push({
           component: 'Chat',
@@ -41,4 +50,12 @@ class Files extends Component {
     }
 }
 
-export default Files;
+const mapStateToProp = (state) => {
+    return {
+        selected: state.files.selected,
+        files: state.files.messages,
+        isFetching: state.files.isFetching
+    }
+}
+
+export default connect(mapStateToProp, Actions)(Files);

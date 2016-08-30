@@ -1,5 +1,7 @@
 
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
+import * as  Actions from './../../actions'
 
 import {
     StyleSheet,
@@ -22,6 +24,14 @@ const styles = StyleSheet.create({
 
 class Calendar extends Component {
 
+    constructor(props) {
+        super(props)
+    }
+
+    componentWillMount() {
+        this.props.fetchData('events', '_FETCH_EVENTS')
+    }
+
     clickHandler() {
         this.props.navigator.push({
           component: 'Home',
@@ -41,4 +51,12 @@ class Calendar extends Component {
     }
 }
 
-export default Calendar;
+const mapStateToProp = (state) => {
+    return {
+        selected: state.calendar.selected,
+        events: state.calendar.messages,
+        isFetching: state.calendar.isFetching
+    }
+}
+
+export default connect(mapStateToProp, Actions)(Calendar);

@@ -1,9 +1,3 @@
-// select convo
-// select file
-// select board
-// select community
-// select post
-
 /* @flow */
 /*global setTimeout*/
 export const selectItem = (type, item) => {
@@ -24,7 +18,7 @@ export const submitMessage = (message) => {
 export const receiveData = (json, returnType, nestedKey) => {
   let returnResponse = {
     type: returnType,
-    data: json,
+    payload: json,
     receivedAt: Date.now()
   }
   if (nestedKey)
@@ -34,7 +28,8 @@ export const receiveData = (json, returnType, nestedKey) => {
 }
 export function fetchData(url, returnType, nestedKey) {
   return function (dispatch) {
-    return fetch(`https://s3.amazonaws.com/datadummy/${url}.json`)
+    // return fetch(`https://s3.amazonaws.com/datadummy/${url}.json`)
+    return fetch(`https://s3.amazonaws.com/datadummy/direct.json`)
       .then(response => response.json())
       .then(json =>
         dispatch(receiveData(json, returnType, nestedKey))

@@ -1,5 +1,5 @@
-
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import {connect} from 'react-redux'
 import * as  Actions from './../../actions'
 
 import {
@@ -22,6 +22,13 @@ const styles = StyleSheet.create({
 });
 
 class Home extends Component {
+    constructor(props) {
+        super(props)
+    }
+
+    componentWillMount() {
+        this.props.fetchData('comunities', '_FETCH_COMMUNITIES')
+    }
 
     clickHandler() {
         this.props.navigator.push({
@@ -43,15 +50,14 @@ class Home extends Component {
     }
 }
 
-export default Home
+const mapStateToProp = (state) => {
+    return {
+        selected: state.home.selected,
+        communities: state.home.messages,
+        boards: state.home.boards,
+        posts: state.home.posts,
+        isFetching: state.home.isFetching
+    }
+}
 
-// const mapStateToProp = (state) => {
-//     return {
-//         user: state.auth.user,
-//         selected: state.groups.selected,
-//         messages: state.chat.messages,
-//         isFetching: state.groups.isFetching
-//     }
-// }
-
-// export default connect(mapStateToProp, Actions)(Home);
+export default connect(mapStateToProp, Actions)(Home);

@@ -14,7 +14,7 @@ export default (state = {
 		        selected: action.payload
 			});
 			break;
-		case '_FETCH_CONVO':
+		case '_FETCH_CONVOS':
 		    return Object.assign({}, state, {
 		        isFetching: false,
 		        conversations: action.payload

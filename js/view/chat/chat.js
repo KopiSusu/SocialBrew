@@ -1,5 +1,7 @@
 
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
+import * as  Actions from './../../actions'
 
 import {
     StyleSheet,
@@ -22,6 +24,14 @@ const styles = StyleSheet.create({
 
 class Chat extends Component {
 
+    constructor(props) {
+        super(props)
+    }
+
+    componentWillMount() {
+        this.props.fetchData('conversations', '_FETCH_CONVOS')
+    }
+
     clickHandler() {
         this.props.navigator.push({
           component: 'Calendar',
@@ -41,4 +51,12 @@ class Chat extends Component {
     }
 }
 
-export default Chat;
+const mapStateToProp = (state) => {
+    return {
+        selected: state.chat.selected,
+        conversations: state.chat.messages,
+        isFetching: state.chat.isFetching
+    }
+}
+
+export default connect(mapStateToProp, Actions)(Chat);
